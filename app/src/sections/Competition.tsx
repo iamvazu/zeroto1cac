@@ -102,7 +102,7 @@ export function Competition() {
     <section
       ref={sectionRef}
       id="competition"
-      className="section-pinned flex flex-col items-center justify-center pt-24 pb-12 p-6 sm:p-8 gap-6 sm:gap-8 overflow-y-auto"
+      className="section-pinned flex flex-col items-center justify-start pt-40 lg:pt-48 pb-12 p-6 sm:p-8 gap-6 sm:gap-8 overflow-y-auto"
       style={{ zIndex: 20, backgroundColor: 'var(--zt-bg-primary)' }}
     >
       {/* Headline */}
@@ -119,7 +119,7 @@ export function Competition() {
         <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-zt-text-primary mb-4 leading-tight">
           America's Premier Youth Coding Competition
         </h2>
-        <p className="text-base lg:text-lg text-zt-text-secondary max-w-xl">
+        <p className="text-base lg:text-lg text-zt-text-secondary max-w-xl mx-auto">
           90% of Congress participates in this bipartisan initiative
         </p>
       </div>
@@ -169,7 +169,7 @@ export function Competition() {
         <p className="font-mono text-xs uppercase tracking-[0.08em] text-zt-text-secondary mb-4 text-center">
           What Winners Receive
         </p>
-        <div className="grid sm:grid-cols-3 gap-3">
+        <div className="grid sm:grid-cols-2 gap-4 max-w-md mx-auto">
           {winnerBenefits.map((benefit) => (
             <div
               key={benefit.title}
