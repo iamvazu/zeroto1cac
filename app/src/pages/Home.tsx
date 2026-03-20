@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navigation } from '@/components/Navigation';
@@ -30,7 +31,21 @@ const sections = [
 ];
 
 export default function Home() {
+  const { hash } = useLocation();
   const [currentSection, setCurrentSection] = useState(0);
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        // Delay slightly for any pinned setups to settle
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      }
+    }
+  }, [hash]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
