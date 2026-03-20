@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,11 +47,13 @@ export function Navigation() {
                 {link.label}
               </a>
             ))}
-            <Button
-              className="bg-zt-accent-purple hover:bg-zt-accent-purple/90 text-white px-6"
-            >
-              Join the Accelerator
-            </Button>
+            <Link to="/join">
+              <Button
+                className="bg-zt-accent-purple hover:bg-zt-accent-purple/90 text-white px-6"
+              >
+                Join the Accelerator
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -77,11 +80,13 @@ export function Navigation() {
                 {link.label}
               </a>
             ))}
-            <Button
-              className="w-full bg-zt-accent-purple hover:bg-zt-accent-purple/90 text-white"
-            >
-              Join the Accelerator
-            </Button>
+            <Link to="/join" onClick={() => setIsMobileMenuOpen(false)} className="w-full block">
+              <Button
+                className="w-full bg-zt-accent-purple hover:bg-zt-accent-purple/90 text-white"
+              >
+                Join the Accelerator
+              </Button>
+            </Link>
           </div>
         </div>
       )}

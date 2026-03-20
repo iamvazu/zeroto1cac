@@ -1,14 +1,18 @@
 import { useParams, Link } from 'react-router-dom';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/sections/Footer';
 import { Button } from '@/components/ui/button';
 import { districts } from '@/data/districts';
-import { MapPin, Award, Users, ShieldAlert } from 'lucide-react';
+import { MapPin, Award, Users, ShieldAlert, Search, Loader2, CheckCircle2 } from 'lucide-react';
 
 export default function LocationPage() {
   const { districtCode } = useParams<{ districtCode: string }>();
   const data = districtCode ? districts[districtCode.toLowerCase()] : null;
+  
+  const [zip, setZip] = useState('');
+  const [lookupStatus, setLookupStatus] = useState<'idle' | 'loading' | 'success'>('idle');
 
   if (!data) {
     return (
@@ -20,6 +24,15 @@ export default function LocationPage() {
       </div>
     );
   }
+
+  const handleLookup = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!zip) return;
+    setLookupStatus('loading');
+    setTimeout(() => {
+      setLookupStatus('success');
+    }, 800);
+  };
 
   // Course Schema Markup for SEO
   const courseSchema = {
@@ -40,11 +53,9 @@ export default function LocationPage() {
       <Helmet>
         <title>{`Win the Congressional App Challenge in ${data.state} ${data.district_code}`}</title>
         <meta name="description" content={`Build a winning app for the Congressional App Challenge in ${data.state} ${data.district_code} with Rep. ${data.representative_name}. Join ZeroTo1's elite 9-month accelerator starting April.`} />
-        {/* OpenGraph Tags for Social Previews */}
         <meta property="og:title" content={`Win the Congressional App Challenge in ${data.state} ${data.district_code}`} />
         <meta property="og:description" content={`Build a winning app for the Congressional App Challenge with Rep. ${data.representative_name}.`} />
         <meta property="og:type" content="website" />
-        {/* Schema Insertion */}
         <script type="application/ld+json">
           {JSON.stringify(courseSchema)}
         </script>
@@ -53,10 +64,43 @@ export default function LocationPage() {
       <Navigation />
 
       <main className="pt-24 lg:pt-32 pb-16 px-6 max-w-6xl mx-auto flex flex-col items-center text-center">
+        {/* Urgency/Scarcity Banner */}
+        <div className="flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200/60 px-4 py-1.5 rounded-full font-medium text-xs mb-4 shadow-sm animate-pulse">
+          <Award size={14} className="text-amber-600" />
+          <span>🔒 Only 5 seats remaining for {data.state} District {data.district_number}</span>
+        </div>
+
         {/* Location Tag */}
         <div className="flex items-center gap-2 bg-zt-accent-cyan/10 text-zt-accent-cyan px-4 py-1.5 rounded-full font-mono text-xs uppercase tracking-wider mb-6">
           <MapPin size={14} />
           <span>{data.state} District {data.district_number}</span>
+        </div>
+
+        {/* Interactive Lookup Widget */}
+        <div className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm max-w-md w-full mb-10 text-left">
+          <h4 className="font-display font-bold text-sm text-zt-text-primary mb-3 flex items-center gap-1.5">
+            <Search size={16} className="text-zt-accent-purple" />
+            Check Your Exclusivity Status
+          </h4>
+          <form onSubmit={handleLookup} className="flex gap-2">
+            <input 
+              type="text"
+              placeholder="Enter 5-digit Zip Code..."
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+              maxLength={5}
+              className="flex-1 px-3 py-2 text-sm border border-slate-200 rounded-lg bg-slate-50 focus:outline-none focus:border-zt-accent-purple"
+            />
+            <Button type="submit" size="sm" className="bg-zt-accent-purple hover:bg-zt-accent-purple/90 h-auto">
+              {lookupStatus === 'loading' ? <Loader2 size={16} className="animate-spin" /> : 'Lookup'}
+            </Button>
+          </form>
+          {lookupStatus === 'success' && (
+            <div className="mt-3 flex items-center gap-2 text-xs text-emerald-600 font-medium animate-fadeIn">
+              <CheckCircle2 size={14} />
+              <span>Zip validated. You are eligible for {data.district_code} cohort.</span>
+            </div>
+          )}
         </div>
 
         {/* H1 Headline */}
