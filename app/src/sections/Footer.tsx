@@ -4,14 +4,32 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Linkedin, Youtube, Users, Calendar, DollarSign } from 'lucide-react';
 
+import chatgptIcon from '@/assets/logos/chatgpt.svg';
+import geminiIcon from '@/assets/logos/gemini.svg';
+import claudeIcon from '@/assets/logos/claude.svg';
+import kimiIcon from '@/assets/logos/kimi.svg';
+
+const AntiGravityLogo = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="9" stroke="url(#ag-glow)" strokeWidth="2.5" />
+    <circle cx="12" cy="12" r="4" fill="url(#ag-glow)" />
+    <defs>
+      <linearGradient id="ag-glow" x1="0" y1="0" x2="1" y2="1">
+        <stop stopColor="#8B5CF6" />
+        <stop offset="1" stopColor="#EC4899" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
 gsap.registerPlugin(ScrollTrigger);
 
 const footerLinks = {
   program: [
-    { label: 'The Challenge', href: '#challenge' },
-    { label: 'AI Product Team', href: '#agents' },
-    { label: 'Curriculum', href: '#roadmap' },
-    { label: 'Pricing', href: '#pricing' },
+    { label: 'The Challenge', href: '/#challenge' },
+    { label: 'AI Product Team', href: '/#agents' },
+    { label: 'Curriculum', href: '/#roadmap' },
+    { label: 'Pricing', href: '/#pricing' },
   ],
   legal: [
     { label: 'Privacy Policy', href: '#' },
@@ -30,12 +48,12 @@ const stats = [
 ];
 
 const aiTools = [
-  { name: 'Google AI Studio', color: 'bg-blue-600', text: 'text-blue-600' },
-  { name: 'Antigravity', color: 'bg-indigo-600', text: 'text-indigo-600' },
-  { name: 'Claude Code', color: 'bg-orange-600', text: 'text-orange-600' },
-  { name: 'Google Gemini', color: 'bg-cyan-600', text: 'text-cyan-600' },
-  { name: 'Kimi', color: 'bg-teal-600', text: 'text-teal-600' },
-  { name: 'OpenAI ChatGPT', color: 'bg-emerald-600', text: 'text-emerald-600' },
+  { name: 'Google AI Studio', icon: geminiIcon },
+  { name: 'Antigravity', icon: 'antigravity' },
+  { name: 'Claude Code', icon: claudeIcon },
+  { name: 'Google Gemini', icon: geminiIcon },
+  { name: 'Kimi', icon: kimiIcon },
+  { name: 'OpenAI ChatGPT', icon: chatgptIcon },
 ];
 
 export function Footer() {
@@ -158,8 +176,12 @@ export function Footer() {
                 key={index} 
                 className="flex items-center gap-3 bg-white px-5 py-3 rounded-xl border border-slate-100 shadow-sm whitespace-nowrap"
               >
-                <div className={`w-3 h-3 rounded-full ${tool.color} shadow-lg`} />
-                <span className="font-display font-bold text-sm text-zt-text-primary">
+                {tool.icon === 'antigravity' ? (
+                  <AntiGravityLogo />
+                ) : (
+                  <img src={tool.icon} alt={tool.name} className="w-[18px] h-[18px] object-contain flex-shrink-0" />
+                )}
+                <span className="font-display font-semibold text-sm text-zt-text-primary">
                   {tool.name}
                 </span>
               </div>

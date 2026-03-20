@@ -16,9 +16,9 @@ export function Navigation() {
   }, []);
 
   const navLinks = [
-    { label: 'Program', href: '#promise' },
-    { label: 'Curriculum', href: '#roadmap' },
-    { label: 'Pricing', href: '#pricing' },
+    { label: 'Program', href: '/#promise' },
+    { label: 'Curriculum', href: '/#roadmap' },
+    { label: 'Pricing', href: '/#pricing' },
   ];
 
   return (
