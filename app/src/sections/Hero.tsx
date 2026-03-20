@@ -14,7 +14,6 @@ export function Hero() {
   const bottomLeftRef = useRef<HTMLDivElement>(null);
   const bottomRightRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
-  const centerlineRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
