@@ -1,0 +1,100 @@
+/* App-specific styles */
+
+/* Ensure smooth scrolling behavior */
+html {
+  scroll-behavior: auto;
+}
+
+/* Section stacking for pinned sections - CRITICAL */
+.section-pinned {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  background-color: #0B0B0D;
+}
+
+/* Flowing sections */
+.section-flowing {
+  position: relative;
+  width: 100%;
+  background-color: #0B0B0D;
+}
+
+/* GPU acceleration for animated elements */
+.will-change-transform {
+  will-change: transform, opacity;
+}
+
+/* Button hover effects */
+button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* Card hover effects */
+.card-border {
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Glow effects */
+.glow-purple {
+  box-shadow: 0 0 40px rgba(177, 78, 255, 0.3),
+              0 0 80px rgba(177, 78, 255, 0.15);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.3),
+              0 0 80px rgba(0, 240, 255, 0.15);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #B14EFF 0%, #00F0FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(0, 240, 255, 0.6);
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(177, 78, 255, 0.3);
+  color: #F6F7FB;
+}
+
+/* Pin spacer fix for GSAP */
+.pin-spacer {
+  background-color: #0B0B0D !important;
+}
+
+/* Ensure all sections have solid background */
+section {
+  background-color: #0B0B0D;
+}
+
+/* Fix for mobile viewport height */
+@supports (height: 100dvh) {
+  .section-pinned {
+    height: 100dvh;
+    min-height: 100dvh;
+    max-height: 100dvh;
+  }
+}
