@@ -29,10 +29,20 @@ const stats = [
   { icon: Calendar, value: '9', label: 'Months' },
 ];
 
+const aiTools = [
+  { name: 'Google AI Studio', color: 'bg-blue-600', text: 'text-blue-600' },
+  { name: 'Antigravity', color: 'bg-indigo-600', text: 'text-indigo-600' },
+  { name: 'Claude Code', color: 'bg-orange-600', text: 'text-orange-600' },
+  { name: 'Google Gemini', color: 'bg-cyan-600', text: 'text-cyan-600' },
+  { name: 'Kimi', color: 'bg-teal-600', text: 'text-teal-600' },
+  { name: 'OpenAI ChatGPT', color: 'bg-emerald-600', text: 'text-emerald-600' },
+];
+
 export function Footer() {
   const sectionRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
+  const tickerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -75,6 +85,17 @@ export function Footer() {
             },
           }
         );
+      }
+
+      // Infinite Ticker
+      const ticker = tickerRef.current;
+      if (ticker) {
+        gsap.to(ticker, {
+          xPercent: -50,
+          repeat: -1,
+          duration: 20,
+          ease: 'none',
+        });
       }
     }, section);
 
@@ -123,10 +144,28 @@ export function Footer() {
         >
           Apply for the 2026 Cohort
         </Button>
+      </div>
 
-        <p className="mt-6 text-sm text-zt-text-secondary/60">
-          Founded by Vasu Ranganathan
+      {/* AI Tools Ticker */}
+      <div className="w-full border-t border-b border-slate-200/60 bg-slate-50/50 py-10 overflow-hidden mb-12">
+        <p className="text-center font-mono text-xs uppercase tracking-[0.08em] text-zt-text-secondary mb-5">
+          Tools You Will Master
         </p>
+        <div className="flex w-max">
+          <div ref={tickerRef} className="flex gap-4 items-center will-change-transform pr-4">
+            {[...aiTools, ...aiTools].map((tool, index) => (
+              <div 
+                key={index} 
+                className="flex items-center gap-3 bg-white px-5 py-3 rounded-xl border border-slate-100 shadow-sm whitespace-nowrap"
+              >
+                <div className={`w-3 h-3 rounded-full ${tool.color} shadow-lg`} />
+                <span className="font-display font-bold text-sm text-zt-text-primary">
+                  {tool.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Footer Grid */}
