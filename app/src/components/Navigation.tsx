@@ -16,7 +16,7 @@ export function Navigation() {
   }, []);
 
   const navLinks = [
-    { label: 'Program', href: '/#promise' },
+    { label: 'Program', href: '/#competition' },
     { label: 'Curriculum', href: '/#roadmap' },
     { label: 'Pricing', href: '/#pricing' },
   ];

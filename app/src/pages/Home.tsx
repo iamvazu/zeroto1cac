@@ -37,13 +37,23 @@ export default function Home() {
   useEffect(() => {
     if (hash) {
       const id = hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        // Delay slightly for any pinned setups to settle
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300);
-      }
+      
+      setTimeout(() => {
+        const triggers = ScrollTrigger.getAll();
+        const trigger = triggers.find(t => t.trigger && (t.trigger as HTMLElement).id === id);
+        
+        if (trigger) {
+          window.scrollTo({
+            top: trigger.start + 1,
+            behavior: 'smooth'
+          });
+        } else {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      }, 500);
     }
   }, [hash]);
 
