@@ -119,7 +119,7 @@ export function Competition() {
         <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-zt-text-primary mb-4 leading-tight">
           America's Premier Youth Coding Competition
         </h2>
-        <p className="text-base lg:text-lg text-zt-text-secondary max-w-xl mx-auto">
+        <p className="text-base lg:text-lg text-zt-text-secondary w-full text-center max-w-xl mx-auto block text-center">
           90% of Congress participates in this bipartisan initiative
         </p>
       </div>
@@ -169,11 +169,11 @@ export function Competition() {
         <p className="font-mono text-xs uppercase tracking-[0.08em] text-zt-text-secondary mb-4 text-center">
           What Winners Receive
         </p>
-        <div className="grid sm:grid-cols-2 gap-4 max-w-md mx-auto">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 max-w-2xl mx-auto mt-2 pl-4 sm:pl-8">
           {winnerBenefits.map((benefit) => (
             <div
               key={benefit.title}
-              className="p-4 rounded-lg bg-zt-bg-secondary/50 border border-white/5 text-center"
+              className="p-4 rounded-lg bg-zt-bg-secondary/50 border border-white/5 text-center w-full max-w-[280px]"
             >
               <benefit.icon className="w-6 h-6 text-zt-accent-purple mx-auto mb-2" />
               <p className="text-sm font-medium text-zt-text-primary mb-1">{benefit.title}</p>

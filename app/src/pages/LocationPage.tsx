@@ -5,7 +5,7 @@ import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/sections/Footer';
 import { Button } from '@/components/ui/button';
 import { districts } from '@/data/districts';
-import { MapPin, Award, Users, ShieldAlert, Search, Loader2, CheckCircle2 } from 'lucide-react';
+import { MapPin, Award, ShieldAlert, Search, Loader2, CheckCircle2 } from 'lucide-react';
 
 export default function LocationPage() {
   const { districtCode } = useParams<{ districtCode: string }>();
@@ -67,7 +67,7 @@ export default function LocationPage() {
         {/* Urgency/Scarcity Banner */}
         <div className="flex items-center gap-2 bg-amber-50 text-amber-700 border border-amber-200/60 px-4 py-1.5 rounded-full font-medium text-xs mb-4 shadow-sm animate-pulse">
           <Award size={14} className="text-amber-600" />
-          <span>🔒 Only 5 seats remaining for {data.state} District {data.district_number}</span>
+          <span>🔒 Only 5 seats remaining for {data.district_code} | ⏳ April Cohort starts in 12 days!</span>
         </div>
 
         {/* Location Tag */}
@@ -110,7 +110,7 @@ export default function LocationPage() {
 
         {/* Localized Intro */}
         <p className="text-base lg:text-lg text-zt-text-secondary max-w-2xl mb-8 leading-relaxed">
-          The competition for <span className="font-semibold text-zt-text-primary">{data.district_code}</span> is hosted by **Rep. {data.representative_name}**. Students living or attending school in this district are highly eligible to submit.
+          The competition for <span className="font-semibold text-zt-text-primary">{data.district_code}</span> is <span className="font-bold text-zt-text-primary">Hosted by Representative {data.representative_name}</span>. Students living or attending school in this district are highly eligible to submit.
         </p>
 
         {/* Competitive Edge Card */}
@@ -121,21 +121,27 @@ export default function LocationPage() {
           </h3>
           <p className="text-zt-text-secondary text-sm lg:text-base leading-relaxed">
             In {data.district_code}, the competition is fierce. Our ZeroTo1 Agent Squad has analyzed the last 5 years of winners in {data.state} to give {data.district_code} students a data-backed roadmap to the U.S. Capitol.
+            {data.local_context && (
+              <span className="block mt-3 pt-3 border-t border-slate-100 font-medium text-zt-text-primary flex items-start gap-1.5">
+                <span className="text-amber-500">💡</span> {data.local_context}
+              </span>
+            )}
           </p>
         </div>
 
-        {/* The Agent Squad Section */}
         <div className="grid md:grid-cols-2 gap-6 max-w-3xl mb-12 text-left">
-          <div className="p-5 border border-slate-100 rounded-xl bg-white">
-            <h4 className="font-bold text-zt-text-primary mb-2">Policy Advisor Agent</h4>
+          <div className="p-5 border border-slate-100 rounded-xl bg-white shadow-sm">
+            <h4 className="font-bold text-zt-text-primary text-sm mb-2">Policy Advisor Agent</h4>
             <p className="text-xs text-zt-text-secondary leading-relaxed">
-              Specifically tuned for {data.state} STEM/Policy priorities. Assesses high-impact district problems so your app resonates perfectly on local submission reviews.
+              {data.agent_logic?.policy_advisor || `Specifically tuned for ${data.state} STEM/Policy priorities. Assesses high-impact district problems so your app resonates perfectly on local submission reviews.`}
             </p>
           </div>
-          <div className="p-5 border border-slate-100 rounded-xl bg-white">
-            <h4 className="font-bold text-zt-text-primary mb-2">Lead Architect Agent</h4>
+          <div className="p-5 border border-slate-100 rounded-xl bg-white shadow-sm">
+            <h4 className="font-bold text-zt-text-primary text-sm mb-2">
+               {data.agent_logic?.house_liaison ? 'House Liaison Agent' : 'Lead Architect Agent'}
+            </h4>
             <p className="text-xs text-zt-text-secondary leading-relaxed">
-              Provides {data.stem_focus} compliance layer guards ensuring clean edge-case technical superiority in local code review metrics scores.
+              {data.agent_logic?.house_liaison || data.agent_logic?.media_director || (data.stem_focus ? `Provides ${data.stem_focus} compliance layer guards ensuring clean edge-case technical superiority in local code review metrics scores.` : `Optimizes app architecture for high scalability standards.`)}
             </p>
           </div>
         </div>
