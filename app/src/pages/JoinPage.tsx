@@ -343,10 +343,105 @@ export default function JoinPage() {
               </div>
             )}
 
+        </div>
+      </div>
+      </main>
+
+      {/* High-Ticket Parent FAQ Section */}
+      <div className="bg-slate-50 border-t border-slate-100 py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-zt-text-primary mb-3">
+              Frequently Asked Questions (For Parents)
+            </h2>
+            <p className="text-sm text-zt-text-secondary max-w-lg mx-auto">
+              Addressing the "High-Ticket" concerns about results, safety, and elite mentorship.
+            </p>
+          </div>
+
+          <div className="space-y-12">
+            {/* 1. The ZeroTo1 Experience */}
+            <div className="bg-white border border-slate-100 rounded-2xl p-6 lg:p-8 shadow-sm">
+              <h3 className="font-display font-bold text-lg text-zt-accent-purple mb-5 flex items-center gap-2 border-b border-slate-50 pb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-zt-accent-purple" />
+                The ZeroTo1 Experience
+              </h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-bold text-sm text-zt-text-primary mb-1.5">How does the "Hybrid Mentorship" model work?</h4>
+                  <p className="text-xs text-zt-text-secondary leading-relaxed">Unlike standard coding classes, your child isn't learning alone. Every session is a one-on-one deep dive held via Google Meet. Your child works directly with a Human Tech Mentor who orchestrates our proprietary ZeroTo1 AI Workspace. Inside this workspace, four specialized AI agents (Policy, Architect, Liaison, and Media) work alongside your child to provide real-time code reviews, policy checks, and creative direction.</p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-zt-text-primary mb-1.5">What is the weekly time commitment?</h4>
+                  <p className="text-xs text-zt-text-secondary leading-relaxed">Success in the Congressional App Challenge requires consistency. The residency is structured as:</p>
+                  <ul className="list-disc list-inside text-xs text-zt-text-secondary pl-2 mt-1 space-y-1">
+                    <li><span className="font-semibold">2 Hours/Week:</span> Live, one-on-one online session with a Human Tech Mentor and AI Squad.</li>
+                    <li><span className="font-semibold">2 Hours/Week:</span> Independent "Studio Time" where the student completes milestones.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-zt-text-primary mb-1.5">Does my child need prior coding experience?</h4>
+                  <p className="text-xs text-zt-text-secondary leading-relaxed">No. Because we use a Multi-Agent AI system, the curriculum is adaptive. If your child is a beginner, our Lead Architect Agent simplifies concepts into "Logic Blocks." If they are advanced, the AI challenges them with professional Python frameworks and API integrations.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. The Competition & Winning */}
+            <div className="bg-white border border-slate-100 rounded-2xl p-6 lg:p-8 shadow-sm">
+              <h3 className="font-display font-bold text-lg text-zt-accent-cyan mb-5 flex items-center gap-2 border-b border-slate-50 pb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-zt-accent-cyan" />
+                The Competition & Winning
+              </h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-bold text-sm text-zt-text-primary mb-1.5">Is this the official Congressional App Challenge?</h4>
+                  <p className="text-xs text-zt-text-secondary leading-relaxed">No. The Congressional App Challenge (CAC) is a free-to-enter competition hosted by the U.S. House of Representatives. ZeroTo1 Academy is a private, elite accelerator that provides the advanced technology, 5 years of winning data, and expert mentorship required to build a submission that actually wins.</p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-zt-text-primary mb-1.5">What happens if our Congressional District doesn't participate?</h4>
+                  <p className="text-xs text-zt-text-secondary leading-relaxed">While over 90% of districts participate, we verify your child's eligibility using their zip code before formal enrollment. If your district is not participating this year, we pivot the residency toward the "ZeroTo1 Global Impact Award," ensuring they still walk away with a prestigious portfolio piece.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. Technology & Safety */}
+            <div className="bg-white border border-slate-100 rounded-2xl p-6 lg:p-8 shadow-sm">
+              <h3 className="font-display font-bold text-lg text-zt-accent-purple mb-5 flex items-center gap-2 border-b border-slate-50 pb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-zt-accent-purple" />
+                Technology & Safety
+              </h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-bold text-sm text-zt-text-primary mb-1.5">Is the AI safe for my middle/high schooler?</h4>
+                  <p className="text-xs text-zt-text-secondary leading-relaxed">Absolutely. Our proprietary AI tool is a "Closed-Loop" system. Unlike open chatbots, our agents are strictly grounded in our "Winning DNA" database and STEM education protocols. Every session is moderated by a Human Mentor to ensure a productive and safe environment.</p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-zt-text-primary mb-1.5">What technical setup do we need at home?</h4>
+                  <p className="text-xs text-zt-text-secondary leading-relaxed">All your child needs is a computer (Mac, PC, or Chromebook) with a stable internet connection and a webcam for Google Meet. Our Interactive Lab runs entirely in the cloud—no complex software installations required.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 4. Investment & Enrollment */}
+            <div className="bg-white border border-slate-100 rounded-2xl p-6 lg:p-8 shadow-sm">
+              <h3 className="font-display font-bold text-lg text-amber-600 mb-5 flex items-center gap-2 border-b border-slate-50 pb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
+                Investment & Enrollment
+              </h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-bold text-sm text-zt-text-primary mb-1.5">Why is the residency 9 months long (April – December)?</h4>
+                  <p className="text-xs text-zt-text-secondary leading-relaxed">Winning a national competition isn't an overnight task. April–June focuses on "The Big Idea" and Logic; July–September builds the high-fidelity app; and October–December handles the submission process, video production, and "House of Code" prep. By starting in April, your child avoids stressful last-minute rushes causing high dropouts.</p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-zt-text-primary mb-1.5">What is the "ZeroTo1 Guarantee"?</h4>
+                  <p className="text-xs text-zt-text-secondary leading-relaxed">We guarantee that by the end of the residency, your child will have a fully functional, original mobile or web app and a professional-quality pitch video ready for submission to the U.S. House of Representatives.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-      </main>
+      </div>
 
       <Footer />
     </div>
